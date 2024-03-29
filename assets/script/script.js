@@ -34,6 +34,8 @@ new Swiper('.swiper', {
     interval: 15000
 })
 
+let smartLoc = navigator.userAgent
+let pickclick = (smartLoc.match(/iPad/i) || smartLoc.match(/iPhone/)) ? "touchstart" : "click";
 
 const dateStroke = document.getElementById('date');
 const date = new Date();
@@ -58,8 +60,15 @@ form.addEventListener('submit', (e) => {
     form.reset();
 })
 
-window.addEventListener('click', (e) => {
-    if(e.target.closest('[modal-open]')) {
+window.addEventListener('resize', () => {
+    if(screen.width > 1024) {
+        menu = false;
+        return checkState(menu, 'menu-active', headerContent);
+    }
+})
+
+window.addEventListener(pickclick, (e) => {
+    if(e.target.closest('[data-modal]')) {
         modalState = !modalState;
         return checkState(modalState, 'active', modal);
     }
@@ -67,19 +76,26 @@ window.addEventListener('click', (e) => {
         modalState = false;
         return checkState(modalState, 'active', modal);
     }
-    if(e.target.closest('[menu]')) {
+    if(e.target.closest('[data-menu]')) {
         menu = !menu;
         return checkState(menu, 'menu-active', headerContent);
     }
 })
 
 function checkState(state, className, el) {
+    const widthWind = window.innerWidth;
+    const docWidth = document.documentElement.clientWidth;
+    const scrollWidth = widthWind - docWidth;
     if(state==true) {
         el.classList.add(className);
         document.body.classList.add('stuck');
     } else {
         el.classList.remove(className)
         document.body.classList.remove('stuck');
+        document.body.style.paddingRight = 0;
+    }
+    if(widthWind > docWidth && state==true) {
+        document.body.style.paddingRight = scrollWidth + 'px';
     }
 }
 
@@ -98,7 +114,7 @@ async function formSubmit() {
         }
     } catch (error) {
         console.log(error)
-        messageStat(false, 'Ошибка отправки данных со стороны сервера', statusMes)
+        messageStat(false, 'Ошибка отправки данных', statusMes)
     }
 }
 async function sendData(data) {
@@ -122,4 +138,7 @@ function messageStat(status, message, el) {
         el.classList.remove('success');
         el.classList.add('rejected');
     }
+    setTimeout(() => {
+        el.classList.remove('rejected', 'success');
+    }, 11000);
 }

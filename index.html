@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Школа программирования для тех, кому нужны реальные навыки, а не просто сертификат">
     <meta name="keywords" content="It школа программирование обучение">
+    <meta name="image" href="./assets/img/icons/CoDe.svg">
     <title>CoDe</title>
+    <link rel="icon" href="./assets/img/icons/CoDe.svg">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
@@ -15,30 +18,53 @@
         integrity="sha512-rd0qOHVMOcez6pLWPVFIv7EfSdGKLt+eafXh4RO/12Fgr41hDQxfGvoi1Vy55QIVcQEujUE1LQrATCLl2Fs+ag==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" 
     />
-    <link rel="stylesheet" href="./assets/style/node.css">
+    <link rel="stylesheet" href="./assets/style/node.min.css">
     <link rel="stylesheet" href="./assets/style/style.css">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "CoDe",
+          "alternateName": "CD",
+          "url": "",
+          "logo": "./assets/img/icons/CoDe.svg",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "",
+            "contactType": "",
+            "areaServed": "RU",
+            "availableLanguage": "Russian"
+          },
+          "sameAs": ""
+        }
+    </script>
 </head>
 <body>
     <header class="header">
         <div class="header-box box">
             <div class="header-content">
                 <div class="header-nav">
-                    <a href="#" class="logo">
-                        <img src="./assets/img/icons/CoDe.svg" alt="Логотип">
-                    </a>
+                    <div class="header-first">    
+                        <a href="#" class="logo" title="На главную">
+                            <img src="./assets/img/icons/CoDe.svg" alt="Логотип">
+                        </a>
+                        <div class="header-first__contact">
+                            <a class="tel" href="tel:+7(499)3489396">+7 (499) 348 93 96</a>
+                        </div>
+                    </div>
                     <nav>
                         <ul>
-                            <li><a href="">Чему вы научитесь</a></li>
-                            <li><a href="">Процесс обучения</a></li>
-                            <li><a href="">Стоимость</a></li>
-                            <li><a href="">Контакты</a></li>
+                            <li><a href="#">Чему вы научитесь</a></li>
+                            <li><a href="#">Процесс обучения</a></li>
+                            <li><a href="#">Стоимость</a></li>
+                            <li><a href="#">Контакты</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="header-contact">
                     <a class="tel" href="tel:+7(499)3489396">+7 (499) 348 93 96</a>
                 </div>
-                <div class="header-menu" menu>
+                <div class="header-menu" data-menu>
                     <div class="header-line"></div>
                 </div>
             </div>
@@ -52,14 +78,16 @@
                         <div class="banner-slide swiper-slide">
                             <div class="banner-slide__right">
                                 <h2 class="title banner-title">
-                                    Школа <span>{</span><strong>программирования</strong><span>}</span>для тех, кому нужны реальные навыки,
+                                    Школа <span>{</span><strong>программирования</strong><span>}</span>для тех, кому нужны 
+                                    </br>
+                                    реальные навыки,
                                     </br>
                                     а не просто сертификат
                                 </h2>
                                 <p class="banner-subtitle">
                                     Закажите звонок, и наш специалист свяжется с вами в ближайшее время
                                 </p>
-                                <button class="btn" modal-open>Заказать звонок</button>
+                                <button class="btn" data-modal>Заказать звонок</button>
                             </div>
                             <div class="banner-slide__left">
                                 <img src="./assets/img/banner/Layer2.png" alt="Изображение">
@@ -75,7 +103,7 @@
                                 <p class="banner-subtitle">
                                     Всё, что вы узнали, вы тут же начинаете применять на практике. Вы сразу видите результаты своего труда.
                                 </p>
-                                <button class="btn" modal-open>Заказать звонок</button>
+                                <button class="btn" data-modal>Заказать звонок</button>
                             </div>
                             <div class="banner-slide__left">
                                 <img src="./assets/img/banner/Layer3.png" alt="Изображение">
@@ -89,7 +117,7 @@
                                 <p class="banner-subtitle">
                                     Теория и практика подаются маленькими порциями. Так вам будет легче усваивать новые знания.
                                 </p>
-                                <button class="btn" modal-open>Заказать звонок</button>
+                                <button class="btn" data-modal>Заказать звонок</button>
                             </div>
                             <div class="banner-slide__left">
                                 <img src="./assets/img/banner/Layer4.png" alt="Изображение">
@@ -97,8 +125,16 @@
                         </div>
                     </div>
                     <div class="banner-control">
-                        <div class="next banner-button"></div>
-                        <div class="prev banner-button"></div>
+                        <div class="next banner-button">
+                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 7C14.5523 7 15 7.44772 15 8C15 8.55228 14.5523 9 14 9L14 7ZM0.292893 8.70711C-0.0976315 8.31658 -0.0976314 7.68342 0.292893 7.29289L6.65685 0.928932C7.04738 0.538407 7.68054 0.538407 8.07107 0.928932C8.46159 1.31946 8.46159 1.95262 8.07107 2.34315L2.41421 8L8.07107 13.6569C8.46159 14.0474 8.46159 14.6805 8.07107 15.0711C7.68054 15.4616 7.04738 15.4616 6.65685 15.0711L0.292893 8.70711ZM14 9L1 9L1 7L14 7L14 9Z" fill="white"/>
+                            </svg>                                
+                        </div>
+                        <div class="prev banner-button">
+                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 7C14.5523 7 15 7.44772 15 8C15 8.55228 14.5523 9 14 9L14 7ZM0.292893 8.70711C-0.0976315 8.31658 -0.0976314 7.68342 0.292893 7.29289L6.65685 0.928932C7.04738 0.538407 7.68054 0.538407 8.07107 0.928932C8.46159 1.31946 8.46159 1.95262 8.07107 2.34315L2.41421 8L8.07107 13.6569C8.46159 14.0474 8.46159 14.6805 8.07107 15.0711C7.68054 15.4616 7.04738 15.4616 6.65685 15.0711L0.292893 8.70711ZM14 9L1 9L1 7L14 7L14 9Z" fill="white"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -277,7 +313,7 @@
                 <div class="footer-top">
                     <div class="footer-top__left">
                         <div class="footer-logo">
-                            <a href="">
+                            <a href="#" title="На главную">
                                 <img src="./assets/img/icons/CoDe.svg" alt="Логотип">
                             </a>
                             <p>
@@ -289,22 +325,22 @@
                         <div class="footer-soc">
                             <ul>
                                 <li>
-                                    <a href="">
+                                    <a href="#"  title="Перейти в Instagram">
                                         <img src="./assets/img/icons/soc-link/inst.svg" alt="Инстаграм">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="#"  title="Перейти в VK">
                                         <img src="./assets/img/icons/soc-link/vk.svg" alt="Вконтакте">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="#"  title="Перейти в Facebook">
                                         <img src="./assets/img/icons/soc-link/facebook.svg" alt="Facebook">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="#"  title="Перейти в YouTube">
                                         <img src="./assets/img/icons/soc-link/yt.svg" alt="YouTube">
                                     </a>
                                 </li>
@@ -313,11 +349,11 @@
                     </div>
                     <div class="footer-top__right">
                         <ul class="footer-nav">
-                            <li><a href="">Чему вы научитесь</a></li>
-                            <li><a href="">Процесс обучения</a></li>
-                            <li><a href="">Стоимость</a></li>
-                            <li><a href="">Контакты</a></li>
-                            <li><a href="">Регистрация</a></li>
+                            <li><a href="#">Чему вы научитесь</a></li>
+                            <li><a href="#">Процесс обучения</a></li>
+                            <li><a href="#">Стоимость</a></li>
+                            <li><a href="#">Контакты</a></li>
+                            <li><a href="#">Регистрация</a></li>
                         </ul>
                         <ul class="footer-contact">
                             <li><a class="tel" href="tel:+7(999)9999999">+7 (999) 999 99 99</a></li>
@@ -330,8 +366,8 @@
                         <p>© <span id="date">2023</span> — Все права защищены</p>
                     </div>
                     <div class="footer-bttm__right">
-                        <a href="">Пользовательское соглашение</a>
-                        <a href="">Политика конфиденциальности</a>
+                        <a href="#">Пользовательское соглашение</a>
+                        <a href="#">Политика конфиденциальности</a>
                     </div>
                 </div>
             </div>
@@ -361,7 +397,7 @@
                 <div class="form-policy">
                     Нажимая кнопку “Отправить”,  соглашаюсь с
                     </br>
-                    <a href="">политикой конфидениальности</a>
+                    <a href="#">политикой конфидениальности</a>
                 </div>
                 <div class="form-btn">
                     <button type="submit" class="btn">Отправить</button>
@@ -380,6 +416,6 @@
         src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=90aaac62-16fd-45a5-ad18-c9ff9afbc746" 
         type="text/javascript"
     ></script>
-    <script src="./assets/script/script.js"></script>
+    <script src="./assets/script/script.min.js"></script>
 </body>
 </html>

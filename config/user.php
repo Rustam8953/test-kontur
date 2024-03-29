@@ -2,7 +2,7 @@
 
     class User {
         private $conn;
-        private $table_name;
+        private $table_name = "";
         public $id;
         public $name;
         public $telephone;

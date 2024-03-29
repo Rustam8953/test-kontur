@@ -59,18 +59,14 @@
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.banner-button::after {
-  content: "";
+.banner-button path {
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  -webkit-mask: url("../img/icons/Arrow.svg") no-repeat 50% 50%;
-  mask: url("../img/icons/Arrow.svg") no-repeat 50% 50%;
-  -webkit-mask-size: cover;
-  mask-size: cover;
   width: 15px;
   height: 15px;
-  background-color: var(--dark);
+  fill: var(--dark) !important;
+  color: var(--dark);
 }
 .banner-button:active {
   -webkit-transform: scale(0.92);
@@ -102,7 +98,7 @@
 .next {
   right: 24px;
 }
-.next::after {
+.next svg {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
@@ -320,6 +316,9 @@
 }
 .form-policy a {
   color: var(--orange);
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .map-cap {
@@ -357,26 +356,35 @@
   .banner-button:hover {
     background-color: var(--orange);
   }
-  .banner-button:hover::after {
-    background-color: var(--light);
+  .banner-button:hover path {
+    fill: var(--light) !important;
   }
   .gallery a:hover img {
     -webkit-transform: scale(1.06);
     -ms-transform: scale(1.06);
     transform: scale(1.06);
   }
+  .form-policy a:hover {
+    color: var(--tif);
+  }
+  .form-policy a:active {
+    color: var(--dark);
+  }
 }
 @media (hover: none) and (pointer: coarse) {
   .banner-button:active {
     background-color: var(--orange);
   }
-  .banner-button:active::after {
-    background-color: var(--light);
+  .banner-button:active path {
+    fill: var(--light) !important;
   }
   .gallery a:active img {
     -webkit-transform: scale(1.06);
     -ms-transform: scale(1.06);
     transform: scale(1.06);
+  }
+  .form-policy a:active {
+    color: var(--tif);
   }
 }
 @media (max-width: 1024px) {
@@ -438,11 +446,29 @@
     flex-direction: column;
     gap: 32px;
     padding: 35px 34px;
+    text-align: center;
   }
   .banner-content {
     background-position: bottom;
     background-image: url("../img/banner/mobile-back.png");
     background-size: cover;
+  }
+  .banner-control {
+    display: none;
+  }
+  .banner .btn {
+    margin: 0 auto;
+  }
+  .banner-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-title {
+    margin-bottom: 24px;
+    font-size: 32px;
+  }
+  .modal-box {
+    width: auto;
   }
 }
 @media (max-width: 648px) {
@@ -495,6 +521,13 @@
   .banner button {
     margin: 0 auto;
   }
+  .banner-title span {
+    display: none;
+  }
+  .banner-title strong {
+    display: block;
+    font-style: italic;
+  }
   .col-items {
     gap: 10px;
   }
@@ -512,6 +545,16 @@
     -ms-flex-align: center;
     align-items: center;
     gap: 17px;
+    padding: 19px 45px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  .col-item:last-child .col-item__icon {
+    margin-bottom: 0;
+  }
+  .col-item__icon {
+    margin-bottom: 8px;
   }
   .col-item__icon img {
     height: 38px;
@@ -523,6 +566,9 @@
   .col-body p.col-body__title {
     font-size: 12px;
     line-height: 12px;
+  }
+  .col-body p.col-body__title {
+    margin-bottom: 5px;
   }
   .article-item {
     gap: 12px;
@@ -540,6 +586,9 @@
   .article-item:first-child .article-title {
     max-width: 155px;
   }
+  .article-item:first-child .article-img {
+    height: 234px;
+  }
   .article-item p {
     font-size: 12px;
     line-height: 17px;
@@ -553,8 +602,14 @@
   }
   .article-img {
     width: 100%;
+    height: 243px;
   }
   .article-img img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    height: 100%;
     width: 100%;
   }
   .article-text {
@@ -571,6 +626,8 @@
   }
   .about-title {
     margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 24px;
   }
   #map {
     height: 415px;
@@ -582,6 +639,7 @@
   }
   .modal-title {
     font-size: 24px;
+    margin-bottom: 20px;
   }
   .form input {
     height: 55px;
